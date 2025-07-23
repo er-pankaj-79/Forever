@@ -6,9 +6,11 @@ const Navbar = () => {
     const [visible, setVisible] = useState(false);
   return (
 
-    <div className='w-full h-25 flex justify-between items-center bg-gray-200'>
+    <div className='w-full h-22 flex justify-between items-center'>
 
-        <img src={assets.logo} className='h-15 ml-15' alt="" />
+        <Link to={'/'}>
+            <img src={assets.logo} className='h-15 ml-15' alt="" />
+        </Link>
 
         <ul className='hidden sm:flex justify-content items-center flex-row mr-20'>
             <NavLink to='/' className='flex flex-col items-center w-full mr-6'>
