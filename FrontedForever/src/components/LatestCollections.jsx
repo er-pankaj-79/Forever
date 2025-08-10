@@ -27,6 +27,8 @@ const LatestCollections = () => {
             {
             latestProducts.map((item, index) => (
                 <ProductItems
+                // why key is used here? Because we are mapping through an array and React needs a unique key for each element in the list.
+                // but key is not a prop that we pass to the component, it is a special prop that React uses internally.
                 key={index}
                 id={item._id}
                 image={item.image} // Add this prop

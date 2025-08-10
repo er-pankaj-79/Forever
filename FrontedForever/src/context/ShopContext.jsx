@@ -2,6 +2,7 @@
 import { createContext } from 'react';
 import {products} from '../assets/assets'
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ShopContext = createContext(); 
 
 // ShopContextProvider used to provide the context for the whole app

@@ -13,7 +13,6 @@ const BestSellers = () => {
         const bestProducts = products.filter((product)=> (product.bestseller === true));
         setBestSellers(bestProducts.slice(0, 6)); // Assuming we want the top 5 best sellers
     }, []);
-
   return (
     <div className='my-10'>
         <div className='text-center py-8 text-3xl'>
