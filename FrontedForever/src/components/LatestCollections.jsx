@@ -14,7 +14,7 @@ const LatestCollections = () => {
         const latest = products.slice(0, 10);
         setlatestProducts(latest);
     },[]);
-
+    
   return (
     <div className='my-10'>
         <div className='text-center py-8 text-3xl'>
