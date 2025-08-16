@@ -2,16 +2,21 @@ import React from 'react'
 import { useState } from 'react'
 import {assets} from '../assets/assets'
 import { Link, NavLink } from 'react-router-dom'
+import { useContext } from 'react';
+import { ShopContext } from '../context/ShopContext';
 const Navbar = () => {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(false); // this state controls the visibility of the sidebar menu for small screens
+    const { showSearch, setShowSearch } = useContext(ShopContext); // Context to manage visibility of the search bar
   return (
 
     <div className='w-full h-22 flex justify-between items-center'>
 
+        {/* Logo and Navigation Links */}
         <Link to={'/'}>
             <img src={assets.logo} className='h-15 ml-15' alt="" />
         </Link>
 
+        {/* Navigation Links for Large Screens */}
         <ul className='hidden sm:flex justify-content items-center flex-row mr-20'>
             <NavLink to='/' className='flex flex-col items-center w-full mr-6'>
                 <p>Home</p>
@@ -36,7 +41,10 @@ const Navbar = () => {
         </ul>
 
         <div className='flex items-center gap-6 mr-20 flex-shrink-0 overflow-visible'>
-            <img src={assets.search_icon}   className='w-5 h-5 cursor-pointer'/>
+            <Link to="/collection"  state={{ openSearch: true }} className="hidden sm:inline" onClick={() => setShowSearch(!showSearch)}>
+                <img src={assets.search_icon} className="w-5 h-5 cursor-pointer" alt="Search" />
+            </Link>
+
 
             <div className='group relative'>
                 <img src= {assets.profile_icon} className="w-5 h-5 cursor-pointer " alt="" />

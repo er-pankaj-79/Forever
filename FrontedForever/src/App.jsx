@@ -1,6 +1,5 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-
 import About from './pages/About'
 import Cart from './pages/Cart'
 import Collection from './pages/Collection'
@@ -12,12 +11,14 @@ import PlaceOrder from './pages/PlaceOrder'
 import Product from './pages/Product'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import SearchBar from './components/SearchBar'
 
 const App = () => {
+  console.log("App component rendered");
   return (
     <div className='w-full h-full flex flex-col'>
-
       <Navbar />
+      <SearchBar />
 
       <Routes>
         <Route path='/about' element={<About />} />

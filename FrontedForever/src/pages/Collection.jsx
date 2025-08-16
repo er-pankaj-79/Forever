@@ -4,12 +4,15 @@ import ProductItems from '../components/ProductItems';
 import { ShopContext } from '../context/ShopContext';
 
 const Collection = () => {
-  const { products } = useContext(ShopContext);
-  const [showFilters, setShowFilters] = useState(false);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const { products ,search , showSearch} = useContext(ShopContext);
 
-  const [Category, setCategory] = useState([]);
-  const [Subcategory, setSubcategory] = useState([]);
+  const [showFilters, setShowFilters] = useState(false); // State to toggle filter visibility if true then show filters (for small screens)
+
+  const [filteredProducts, setFilteredProducts] = useState([]); // This state will hold the filtered products based on search, category, and subcategory
+
+  const [Category, setCategory] = useState([]); // This state will hold the selected categories
+
+  const [Subcategory, setSubcategory] = useState([]); // This state will hold the selected subcategories
 
   // This function updates the category state to include or exclude the selected category
   const toggleCategory = (e) => {
@@ -28,26 +31,28 @@ const Collection = () => {
     }
   };
 
-  
-  // Already mounted in ApplyFilters function, so this useEffect is not needed
-  // useEffect(() => {
-  //   // Initialize filtered products with all products on component mount
-  //   setFilteredProducts(products);
-  // }, [products]);
+  console.log("Search:", search);
 
 
-  const ApplyFilters = () => {
+  const ApplyFilters = () => { //on change of category or subcategory + every time page loads
     let ProductsCopy = products.slice();
+
+    if(showSearch && search){ // If search is active, filter products based on search term
+      const searchTerm = search.toLowerCase();
+      ProductsCopy = ProductsCopy.filter(item => item.name.toLowerCase().includes(searchTerm));
+    }
+
     if(Category.length > 0) {
       ProductsCopy = ProductsCopy.filter( item => Category.includes(item.category));
     }
 
     if(Subcategory.length > 0) {
-      ProductsCopy = ProductsCopy.filter( item => Subcategory.includes(item.subCategory));
+      ProductsCopy =  ProductsCopy.filter( item => Subcategory.includes(item.subCategory));
     }
     
     setFilteredProducts(ProductsCopy);
   }
+  
   const sortProducts = (e) =>{ // Price -> low to high || high to low
 
     let ProductsCopy = filteredProducts.slice();
@@ -67,7 +72,7 @@ const Collection = () => {
 
 useEffect(() => {
   ApplyFilters();
-}, [Category, Subcategory, products]);
+}, [Category, Subcategory, search, showSearch,products]);
 
   return (
     <div className="flex flex-col text-xl gap-4 p-4 sm:flex-row">
