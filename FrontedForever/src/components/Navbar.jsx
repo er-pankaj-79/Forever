@@ -13,11 +13,11 @@ const Navbar = () => {
 
         {/* Logo and Navigation Links */}
         <Link to={'/'}>
-            <img src={assets.logo} className='h-15 ml-15' alt="" />
+            <img src={assets.logo} className='h-15' alt="" />
         </Link>
 
         {/* Navigation Links for Large Screens */}
-        <ul className='hidden sm:flex justify-content items-center flex-row mr-20'>
+        <ul className='hidden sm:flex justify-content items-center flex-row'>
             <NavLink to='/' className='flex flex-col items-center w-full mr-6'>
                 <p>Home</p>
                 <hr className='w-full border-none h-[2.5px] bg-gray-700 hidden'/>
@@ -40,7 +40,7 @@ const Navbar = () => {
 
         </ul>
 
-        <div className='flex items-center gap-6 mr-20 flex-shrink-0 overflow-visible'>
+        <div className='flex items-center gap-6 flex-shrink-0 overflow-visible'>
             <Link to="/collection"  state={{ openSearch: true }} className="hidden sm:inline" onClick={() => setShowSearch(!showSearch)}>
                 <img src={assets.search_icon} className="w-5 h-5 cursor-pointer" alt="Search" />
             </Link>

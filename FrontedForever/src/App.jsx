@@ -16,7 +16,7 @@ import SearchBar from './components/SearchBar'
 const App = () => {
   console.log("App component rendered");
   return (
-    <div className='w-full h-full flex flex-col'>
+    <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] flex flex-col'>
       <Navbar />
       <SearchBar />
 
@@ -29,7 +29,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/orders' element={<Orders />} />
         <Route path='/placeorder' element={<PlaceOrder />} />
-        <Route path='/product' element={<Product />} />
+        <Route path='/product/:productId' element={<Product />} />
 
       </Routes>      
       <Footer />

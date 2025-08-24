@@ -31,7 +31,7 @@ const Collection = () => {
     }
   };
 
-  console.log("Search:", search);
+  // console.log("Search:", search);
 
 
   const ApplyFilters = () => { //on change of category or subcategory + every time page loads
@@ -78,7 +78,7 @@ useEffect(() => {
     <div className="flex flex-col text-xl gap-4 p-4 sm:flex-row">
 
       {/* Left Column Filter section */}
-      <div className="ml-15 mt-15 flex flex-col">
+      <div className="mt-15 flex flex-col">
 
         {/* Filter toggle button - visible only on small screens */}
         <p
@@ -132,7 +132,7 @@ useEffect(() => {
       </div>
 
       {/* Right Column - Collection and all products */}
-      <div className="flex flex-col mr-20 ml-15 w-full">
+      <div className="flex flex-col ml-4 w-full">
 
         {/* Title and Sort By Section */}
         <div className="flex flex-row gap-4 mb-4 mt-15 w-full justify-between">
